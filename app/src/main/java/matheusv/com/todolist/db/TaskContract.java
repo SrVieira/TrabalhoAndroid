@@ -3,9 +3,10 @@ package matheusv.com.todolist.db;
 import android.provider.BaseColumns;
 
 /**
- * Created by d23as on 26/09/2017.
+ * @author Matheus Vieira
+ * @since 29/09/2017
+ * @version  1.0
  */
-
 public class TaskContract {
 
     public static final String DB_NAME = "matheusv.com.todolist.db";

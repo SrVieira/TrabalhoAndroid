@@ -4,6 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * @author Matheus Vieira
+ * @since 29/09/2017
+ * @version  1.0
+ */
 public class TaskDbHelper extends SQLiteOpenHelper{
 
     public TaskDbHelper(Context context){

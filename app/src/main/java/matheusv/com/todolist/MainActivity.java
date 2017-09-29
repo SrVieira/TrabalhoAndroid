@@ -20,12 +20,17 @@ import android.widget.TextView;
 import matheusv.com.todolist.db.TaskContract;
 import matheusv.com.todolist.db.TaskDbHelper;
 
+/**
+ * @author Matheus Vieira
+ * @since 29/09/2017
+ * @version  1.0
+ */
 public class MainActivity extends AppCompatActivity {
 
     private TaskDbHelper mHelper;
     private ListView mTaskListView;
-    private static final String TAG = "MainActivity";
     private ArrayAdapter<String> mAdapter;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         mHelper = new TaskDbHelper(this);
         mTaskListView = (ListView) findViewById(R.id.list_todo);
 
-        updateUI();
+        updateInformations();
 
     }
 
@@ -66,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                         values,
                                         SQLiteDatabase.CONFLICT_REPLACE);
                                 db.close();
-                                updateUI();
+                                updateInformations();
                             }
                         })
                         .setNegativeButton("Cancelar", null)
@@ -88,10 +93,10 @@ public class MainActivity extends AppCompatActivity {
                 TaskContract.TaskEntry.COL_TASK_TITLE + " = ?",
                 new String[]{task});
         db.close();
-        updateUI();
+        updateInformations();
     }
 
-    private void updateUI() {
+    private void updateInformations() {
         ArrayList<String> taskList = new ArrayList<>();
         SQLiteDatabase db = mHelper.getReadableDatabase();
         Cursor cursor = db.query(TaskContract.TaskEntry.TABLE,
@@ -110,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
             mTaskListView.setAdapter(mAdapter);
         } else {
             mAdapter.clear();
-            mAdapter.addAll(taskList);
             mAdapter.addAll(taskList);
             mAdapter.notifyDataSetChanged();
         }
